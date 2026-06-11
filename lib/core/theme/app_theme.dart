@@ -47,13 +47,12 @@ class AppTheme {
           fontSize: 18, fontWeight: FontWeight.w700, color: textPrimary),
         iconTheme: const IconThemeData(color: textPrimary),
       ),
-      // ✅ CardThemeData (não CardTheme) — corrige o erro de tipo
-      cardTheme: CardThemeData(
+      cardTheme: ThemeData.light().cardTheme.copyWith(
         color: surface,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: divider),
+          side: BorderSide(color: divider),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
