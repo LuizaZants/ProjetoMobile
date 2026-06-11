@@ -2,7 +2,7 @@ name: Build APK
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ] # Adicione a develop aqui
   workflow_dispatch:
 
 jobs:
