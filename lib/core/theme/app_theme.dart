@@ -30,37 +30,47 @@ class AppTheme {
       ),
       scaffoldBackgroundColor: background,
       textTheme: GoogleFonts.interTextTheme().copyWith(
-        displayMedium: GoogleFonts.inter(fontSize: 26, fontWeight: FontWeight.w700, color: textPrimary),
-        headlineLarge: GoogleFonts.inter(fontSize: 22, fontWeight: FontWeight.w700, color: textPrimary),
+        displayMedium:  GoogleFonts.inter(fontSize: 26, fontWeight: FontWeight.w700, color: textPrimary),
+        headlineLarge:  GoogleFonts.inter(fontSize: 22, fontWeight: FontWeight.w700, color: textPrimary),
         headlineMedium: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w600, color: textPrimary),
-        headlineSmall: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w600, color: textPrimary),
-        bodyLarge: GoogleFonts.inter(fontSize: 16, color: textPrimary),
-        bodyMedium: GoogleFonts.inter(fontSize: 14, color: textPrimary),
-        bodySmall: GoogleFonts.inter(fontSize: 12, color: textSecondary),
-        labelLarge: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w600, color: textPrimary),
+        headlineSmall:  GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w600, color: textPrimary),
+        bodyLarge:      GoogleFonts.inter(fontSize: 16, color: textPrimary),
+        bodyMedium:     GoogleFonts.inter(fontSize: 14, color: textPrimary),
+        bodySmall:      GoogleFonts.inter(fontSize: 12, color: textSecondary),
+        labelLarge:     GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w600, color: textPrimary),
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: surface,
         elevation: 0,
         scrolledUnderElevation: 1,
-        titleTextStyle: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w700, color: textPrimary),
+        titleTextStyle: GoogleFonts.inter(
+          fontSize: 18, fontWeight: FontWeight.w700, color: textPrimary),
         iconTheme: const IconThemeData(color: textPrimary),
       ),
-      // CORRIGIDO AQUI: Adicionado o 'const' necessário para validar o BorderSide interno
-      cardTheme: const CardTheme(
+      // ✅ CardThemeData (não CardTheme) — corrige o erro de tipo
+      cardTheme: CardThemeData(
         color: surface,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(16)),
-          side: BorderSide(color: divider),
+          borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(color: divider),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: surfaceVariant,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
-        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
-        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: primary, width: 1.5)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: const BorderSide(color: primary, width: 1.5),
+        ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         hintStyle: GoogleFonts.inter(color: textHint, fontSize: 14),
       ),

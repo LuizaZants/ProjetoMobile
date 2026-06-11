@@ -26,8 +26,8 @@ android {
         release { 
             signingConfig = signingConfigs.getByName("debug")
             // Alterado e adicionado aqui para corrigir o erro de 'shrink resources'
-            isMinifyEnabled = true
-            isShrinkResources = true
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 
