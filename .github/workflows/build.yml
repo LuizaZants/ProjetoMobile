@@ -13,11 +13,20 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v4
 
+      # AJUSTE 1: Configurar o Java necessário para o novo Gradle 9
+      - name: Configurar JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      # O subosito/flutter-action vai herdar o JDK configurado acima
       - name: Instalar Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.22.0'
 
+      # Mantive o seu passo inteligente dos segredos
       - name: Criar config.json
         run: |
           echo '{
@@ -31,8 +40,9 @@ jobs:
       - name: Build APK
         run: flutter build apk --release
 
+      # AJUSTE 2: Ajuste no caminho para garantir que ele ache o arquivo .apk
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/*.apk
