@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("dev.flutter.flutter-gradle-plugin")
-    // ADICIONE ESTA LINHA ABAIXO:
     id("org.jetbrains.kotlin.android") 
 }
 
@@ -26,15 +25,17 @@ android {
     buildTypes {
         release { 
             signingConfig = signingConfigs.getByName("debug")
-            isMinifyEnabled = false 
+            // Alterado e adicionado aqui para corrigir o erro de 'shrink resources'
+            isMinifyEnabled = true
+            isShrinkResources = true
         }
     }
 
-    // Agora o plugin do Kotlin está aplicado acima, então isso vai funcionar:
     kotlinOptions {
         jvmTarget = "17"
     }
 }
+
 flutter { 
     source = "../.." 
 }
