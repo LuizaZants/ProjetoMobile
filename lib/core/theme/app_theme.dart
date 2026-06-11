@@ -46,12 +46,13 @@ class AppTheme {
         titleTextStyle: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w700, color: textPrimary),
         iconTheme: const IconThemeData(color: textPrimary),
       ),
-      cardTheme: CardThemeData(
+      // CORRIGIDO AQUI: Adicionado o 'const' necessário para validar o BorderSide interno
+      cardTheme: const CardTheme(
         color: surface,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: divider),
+          borderRadius: BorderRadius.all(Radius.circular(16)),
+          side: BorderSide(color: divider),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
