@@ -10,6 +10,9 @@ import '../../domain/entities/chat_message.dart';
 import '../../domain/entities/route_info.dart';
 import '../../core/constants/place_categories.dart';
 
+// IMPORT DO SEU NOVO SERVIÇO DE PLACES (API NEW)
+import '../../services/PlaceService.dart';
+
 // ── DataSources ───────────────────────────────────────────────────────────────
 final _placesDS     = Provider((_) => PlacesRemoteDataSourceImpl());
 final _directionsDS = Provider((_) => DirectionsRemoteDataSourceImpl());
@@ -26,9 +29,9 @@ final _geminiRepo     = Provider((ref) => GeminiRepositoryImpl(ref.read(_geminiD
 final selectedPlaceProvider = StateProvider<Place?>((_) => null);
 
 // ── Photo URL helper ──────────────────────────────────────────────────────────
+// Ajustado para apontar para o novo GooglePlacesService (Places API New)
 final photoUrlProvider = Provider((ref) {
-  final repo = ref.read(_placesRepo);
-  return (String photoRef) => repo.getPhotoUrl(photoRef);
+  return (String photoName) => GooglePlacesService.fotoUrl(photoName);
 });
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -220,7 +223,7 @@ class ChatNotifier extends StateNotifier<ChatState> {
       );
 
       final aiMsg = ChatMessage(content: reply, role: MessageRole.assistant);
-      final msgs  = state.messages.where((m) => !m.isLoading).toList()..add(aiMsg);
+      final msgs   = state.messages.where((m) => !m.isLoading).toList()..add(aiMsg);
       state = state.copyWith(messages: msgs, isLoading: false);
     } catch (e) {
       final errMsg = ChatMessage(content: e.toString(), role: MessageRole.assistant);
