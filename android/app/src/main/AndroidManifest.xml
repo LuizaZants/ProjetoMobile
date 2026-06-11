@@ -6,7 +6,7 @@
     <application android:label="Tour" android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher" android:usesCleartextTraffic="true">
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDWs2Uvi2MSBfCBA_uVJqYWJAjyqWtgDyk"/>
+            android:value="AIzaSyCe-xs5jhwH-kdMODxM6hjwR3CkXiI9xS0"/>
         <activity android:name=".MainActivity" android:exported="true"
             android:launchMode="singleTop" android:taskAffinity=""
             android:theme="@style/LaunchTheme"
