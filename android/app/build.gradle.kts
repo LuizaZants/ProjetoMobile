@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("dev.flutter.flutter-gradle-plugin")
+    // ADICIONE ESTA LINHA ABAIXO:
+    id("org.jetbrains.kotlin.android") 
 }
 
 android {
@@ -28,13 +30,11 @@ android {
         }
     }
 
-    // ADICIONADO AQUI: O formato clássico que o Gradle 8.7 entende sem quebrar
+    // Agora o plugin do Kotlin está aplicado acima, então isso vai funcionar:
     kotlinOptions {
         jvmTarget = "17"
     }
 }
-
-// O bloco antigo do kotlin foi removido daqui de baixo
 flutter { 
     source = "../.." 
 }
